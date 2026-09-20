@@ -4,6 +4,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>집온 JipOn</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -38,16 +43,16 @@
         
         <section id="features">
             <h2>전체 서비스</h2>
-            <ul>
-                <li>
+            <ul class="features-list">
+                <li class="features-card">
                     <h3>생활 청소</h3>
                     <p>혼자 살수록 미루기 쉬운 집안일을 대신한 맞춤 청소 서비스</p>
                 </li>
-                <li>
+                <li class="features-card">
                     <h3>이사 청소</h3>
                     <p>입주 전부터 퇴거 후까지, 새로운 시작을 위한 꼼꼼한 공간 청소</p>
                 </li>
-                <li>
+                <li class="features-card">
                     <h3>설치 및 수리</h3>
                     <p>혼자서는 어려운 각종 가전, 가구 설치와 수리를 한번에 해결</p>
                 </li>
@@ -65,7 +70,7 @@
             </ol>
         </section>
         
-        <section id="subscribe">
+        <section id="subscribe" class="subscribe-card">
             <h2>서비스 관련 소식 받기</h2>
             <form>
                 <label for="email">이메일</label>
