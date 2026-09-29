@@ -3,8 +3,8 @@ let isSubscribed = false;
 let submitCount = 0;
 
 
-function makesubscribeButton(email, subscribed) {
-    if(subscribed == true) {
+function makesubscribeMessage(email, subscribed) {
+    if (subscribed == true) {
         return email + "로 신청이 완료되었습니다.";
     }
     
@@ -33,7 +33,7 @@ function handleSubscribe(event) {
     submitCount += 1;
 
     subscribeMessage.textContent = 
-        makeSubcribeMessage(subscriberEmail, isSubcribed);
+        makesubscribeMessage(subscriberEmail, isSubscribed);
 
     subscribeMessage.classList.add("is-success");
 
