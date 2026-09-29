@@ -2,7 +2,6 @@ const serviceName = "집온JipOn";
 let isSubscribed = false;
 let submitCount = 0;
 
-
 function makesubscribeMessage(email, subscribed) {
     if (subscribed == true) {
         return email + "로 신청이 완료되었습니다.";
@@ -10,7 +9,6 @@ function makesubscribeMessage(email, subscribed) {
     
     return "이메일을 입력한 뒤 신청해주세요.";
 }
-
 
 const subscribeForm = document.querySelector("#subscribe-form");
 const emailInput = document.querySelector("#email");

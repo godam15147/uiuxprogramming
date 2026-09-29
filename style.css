@@ -182,6 +182,7 @@ button:active{
     cursor: not-allowed;
 }
 
+
 /*웹페이지가 표시되는 가로 폭이 768xp 이하일 때만 적용*/
 @media (max-width: 768px){
     body{
