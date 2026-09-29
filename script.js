@@ -1,15 +1,16 @@
-const serviceName = "집온 JipOn";
-let isSubcribed = false;
+const serviceName = "집온JipOn";
+let isSubscribed = false;
 let submitCount = 0;
 
 
-function makeSubcribeMessage(email, subscribed) {
+function makesubscribeButton(email, subscribed) {
     if(subscribed == true) {
         return email + "로 신청이 완료되었습니다.";
     }
     
     return "이메일을 입력한 뒤 신청해주세요.";
 }
+
 
 const subscribeForm = document.querySelector("#subscribe-form");
 const emailInput = document.querySelector("#email");
@@ -28,7 +29,7 @@ function handleSubscribe(event) {
         return;
     }
 
-    isSubcribed = true;
+    isSubscribed = true;
     submitCount += 1;
 
     subscribeMessage.textContent = 
