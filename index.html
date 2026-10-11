@@ -44,20 +44,70 @@
         
         <section id="features">
             <h2>전체 서비스</h2>
-            <ul class="features-list">
-                <li class="features-card">
-                    <h3>생활 청소</h3>
-                    <p>혼자 살수록 미루기 쉬운 집안일을 대신한 맞춤 청소 서비스</p>
-                </li>
-                <li class="features-card">
-                    <h3>이사 청소</h3>
-                    <p>입주 전부터 퇴거 후까지, 새로운 시작을 위한 꼼꼼한 공간 청소</p>
-                </li>
-                <li class="features-card">
-                    <h3>설치 및 수리</h3>
-                    <p>혼자서는 어려운 각종 가전, 가구 설치와 수리를 한번에 해결</p>
-                </li>
-            </ul>
+
+            <div class="tabs" role="tablist" aria-label="기능 선택">
+                <button 
+                    id="tab-practice"
+                    class="tab is-active"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="feature-practice"
+                    data-target="#feature-practice">
+                    생활 청소
+                </button>
+
+                <button
+                    id="tab-audience"
+                    class="tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="feature-audience"
+                    data-target="#feature-audience">
+                    이사 청소
+                </button>
+
+                <button
+                    id="tab-feedback"
+                    class="tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="feature-feedback"
+                    data-target="#feature-feedback">
+                    설치 및 수리
+                </button>
+            </div>
+
+            <div
+                id="feature-practice"
+                class="panel is-active"
+                role="tabpanel"
+                aria-labelledby="tab-practice">
+                <h3>생활 청소</h3>
+                <p>혼자 살수록 미루기 쉬운 집안일을 대신한 맞춤 청소 서비스</p>        
+            </div>
+
+            <div
+                id="feature-audience"
+                class="panel"
+                role="tabpanel"
+                aria-labelledby="tab-audience"
+                hidden>
+                <h3>이사 청소</h3>
+                <p>입주 전부터 퇴거 후까지, 새로운 시작을 위한 꼼꼼한 공간 청소</p>       
+            </div>
+
+            <div
+                id="feature-feedback"
+                class="panel"
+                role="tabpanel"
+                aria-labelledby="tab-feedback"
+                hidden>
+                <h3>설치 및 수리</h3>
+                <p>혼자서는 어려운 각종 가전, 가구 설치와 수리를 한번에 해결</p>       
+            </div>
         </section>
 
         <section id="steps">
@@ -71,6 +121,38 @@
             </ol>
         </section>
         
+        <section id="event-practice">
+            <h2>서비스 이용 설정</h2>
+
+            <div class="event-grid">
+                <article class="event-card">
+                    <h3>화면 테마</h3>
+                    <button id="themeButton" type="button">다크 모드로 변경</button>
+                </article>
+
+                <article class="event-card">
+                    <h3>사용자 정보</h3>
+                    <label for="nickname">사용자 이름</label>
+                    <input type="text" id="nickname" maxlength="10">
+                    <p id="nicknameCount" aria-live="polite">0 / 10</p>
+                </article>
+
+                <article class="event-card">
+                    <h3>개인정보 제공 동의</h3>
+                    <label class="agree-row">
+                        <input type="checkbox" id="agreeCheck">
+                        서비스 이용을 위한 개인정보 제공에 동의합니다.
+                    </label>
+                    <p id="agreeMessage" aria-live="polite">
+                        동의 후 서비스를 이용하실 수 있습니다.
+                    </p>
+                    <button id="startButton" type="button" disabled>
+                        서비스 이용하기
+                    </button>
+                </article>
+            </div>
+        </section>
+
         <section id="subscribe" class="subscribe-card">
             <h2>서비스 관련 소식 받기</h2>
             <form id="subscribe-form">
