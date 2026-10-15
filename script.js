@@ -209,7 +209,7 @@ optionNext.addEventListener("click", () => {
     formData.qnaCount = count.value;
     summaryTitle.textContent = formData.title;
     summaryDuration.textContent = formData.duration + "분";
-    summaryQna.textContent = formData.qna ? formData.qnaCount + "개 포함" ; "미포함";
+    summaryQna.textContent = formData.qna ? formData.qnaCount + "개 포함" : "미포함";
     showStep(2);
 });
 
