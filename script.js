@@ -117,7 +117,7 @@ tabs.forEach(function (tab) {
 
 const trainingFlow = document.querySelector("#training-flow");
 const flowSteps = trainingFlow.querySelectorAll(".step");
-const progressItems = trainingFlow.querySelectorAll(".progress__item");
+const progressItems = trainingFlow.querySelectorAll(".progress_item");
 const titleInput = document.querySelector("#presentation-title");
 const titleError = document.querySelector("#title-error");
 const titleNext = document.querySelector("#title-next");
@@ -133,7 +133,7 @@ const restartButton = document.querySelector("#restart-button");
 const summaryTitle = document.querySelector("#summary-title");
 const summaryDuration = document.querySelector("#summary-duration");
 const summaryQna = document.querySelector("#summary-qna");
-const durationValues = ["3", "5", "10"];
+const durationValues = ["3", "5", "8"];
 
 const formData = {
     title:"", duration: "5", qna: false, qnaCount: "2"
@@ -178,7 +178,7 @@ recordingConfirm.addEventListener("click", () => {
 function validateTitle() {
     const value = titleInput.value.trim();
     if (!value) {
-        titleError.textContent = "발표 제목을 입력해 주세요";
+        titleError.textContent = "문의 제목을 입력해 주세요";
         titleInput.classList.add("has-error");
         titleInput.focus();
         return false;
@@ -195,7 +195,7 @@ titleNext.addEventListener("click", () => {
 });
 
 durationRange.addEventListener("input", () => {
-    durationValue.value = durationValues[durationRange.value] + "분";
+    durationValue.value = durationValues[durationRange.value] + "시간";
 });
 qnaOption.addEventListener("change", () => {
     qnaOptions.hidden = !qnaOption.checked;
@@ -206,10 +206,10 @@ optionNext.addEventListener("click", () => {
     formData.duration = durationValues[durationRange.value];
     formData.qna = qnaOption.checked;
     const count = document.querySelector('input[name="qna-count"]:checked');
-    formData.qnaCount = count.value;
+    formData.qnaCount = count ? count.value : "";
     summaryTitle.textContent = formData.title;
-    summaryDuration.textContent = formData.duration + "분";
-    summaryQna.textContent = formData.qna ? formData.qnaCount + "개 포함" : "미포함";
+    summaryDuration.textContent = formData.duration + "시간";
+    summaryQna.textContent = formData.qna ? formData.qnaCount + "번" : "미포함";
     showStep(2);
 });
 
@@ -224,7 +224,7 @@ restartButton.addEventListener("click", () => {
     titleError.textContent = "";
     titleInput.classList.remove("has-error");
     durationRange.value = "1";
-    durationValue.value = "5분";
+    durationValue.value = "5시간";
     qnaOption.checked = false;
     qnaOptions.hidden = true;
     document.querySelector('input[name="qna-count"][value="2"]').checked = true;

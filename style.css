@@ -239,6 +239,14 @@ body.dark .subscribe-card{
     background-color: #50515f;
     border-color: #292a31;
 }
+body.dark #subscribeMessage {
+    color: #b0d9f0;
+}
+
+body.dark #agreeMessage:not(.is-ready) {
+    background-color: #292a31;
+    color: #b0d9f0;
+}
 
 #agreeMessage{
     padding: 12px;
