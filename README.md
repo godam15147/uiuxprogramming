@@ -52,3 +52,9 @@
 - 정상 경로: 신청 완료 화면에서 체크리스트로 이동하고, 항목 체크 및 전체 완료 안내를 확인.
 - 수정 경로: 체크 해제 및 초기화 후 진행률이 정상적으로 변경되는 것을 확인.
 - 이전 화면 이동: 신청 완료 화면으로 정상 복귀하는 것을 확인.
+
+8. 본인 프로젝트의 GitHub 저장소 주소
+https://github.com/godam15147/uiuxprogramming
+
+9. 배포된 웹페이지 주소
+https://godam15147.github.io/uiuxprogramming/
