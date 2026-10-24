@@ -212,11 +212,71 @@
 
             <section class="step complete-step" data-step="4" hidden>
                 <h3>서비스 신청이 완료되었습니다</h3>
-                <p>신청한 내용을 확인했습니다. 필요한 경우 재신청 할 수 있습니다.</p>
-                <button id="restart-button" type="button">재설정</button>
+                <p>신청한 내용을 확인했습니다. 방문 전 준비 사항도 미리 확인해 보세요.</p>
+                <div class="step-actions complete-actions">
+                    <button id="prep-open-button" type="button">방문 전 준비하기</button>
+                    <button id="restart-button" type="button" class="button-secondary">재설정</button>
+                </div>
             </section>
 
+            <!--중간고사 기능 추가 항목-->
+            <section class="step preparation-step" data-step="5" hidden>
+                <h3>서비스 이용 준비 체크리스트</h3>
+                <p>조금만 미리 준비하면 더 편안한 청소 서비스를 이용할 수 있어요.</p>
+
+                <div class="prep-progress" aria-live="polite">
+                    <div class="prep-progress-heading">
+                        <span>준비 진행률</span>
+                        <strong id="prep-progress-text">0 / 4 완료</strong>
+                    </div>
+                    <div class="prep-progress-track" role="progressbar"
+                         aria-label="집온 방문 전 준비 진행률" aria-valuemin="0"
+                         aria-valuemax="4" aria-valuenow="0" id="prep-progress-bar">
+                        <div id="prep-progress-fill" class="prep-progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="prep-checklist">
+                    <label class="prep-item">
+                        <input type="checkbox" class="prep-check" value="belongings">
+                        <span>
+                            <strong>귀중품 및 개인 물품 정리</strong>
+                            <small>청소 중 분실이나 파손이 걱정되는 물건을 안전한 곳에 보관해 주세요.</small>
+                        </span>
+                    </label>
+                    <label class="prep-item">
+                        <input type="checkbox" class="prep-check" value="space">
+                        <span>
+                            <strong>청소가 필요한 공간 확인하기</strong>
+                            <small>특히 신경 써 주었으면 하는 공간을 미리 생각해 주세요.</small>
+                        </span>
+                    </label>
+                    <label class="prep-item">
+                        <input type="checkbox" class="prep-check" value="access">
+                        <span>
+                            <strong>출입 환경 확인하기</strong>
+                            <small>방문 시 출입 방법과 필요한 안내 사항을 확인해 주세요.</small>
+                        </span>
+                    </label>
+                    <label class="prep-item">
+                        <input type="checkbox" class="prep-check" value="requests">
+                        <span>
+                            <strong>전달할 요청 사항 정리하기</strong>
+                            <small>청소 시 주의할 점이나 집온에 알릴 내용을 정리해 주세요.</small>
+                        </span>
+                    </label>
+                </div>
+
+                <p id="prep-status-message" class="prep-status-message" aria-live="polite">
+                    준비 항목을 체크하면 진행률이 업데이트됩니다.
+                </p>
+                <div class="step-actions">
+                    <button id="prep-back-button" type="button" class="button-secondary">신청 완료 화면으로</button>
+                    <button id="prep-reset-button" type="button" class="button-secondary">체크리스트 다시 시작</button>
+                </div>
+            </section>
         </section>
+        <!--중간고사 기능 추가 부분 끝-->
 
         <section id="subscribe" class="subscribe-card">
             <h2>서비스 관련 소식 받기</h2>

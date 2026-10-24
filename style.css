@@ -448,3 +448,116 @@ body.dark .training-flow{
     .training-flow input[type="checkbox"],
     .training-flow input[type="radio"] {width: auto;}
 }
+
+
+/* 중간고사 기능 추가 항목: 방문 전 준비 체크리스트 */
+.training-flow .prep-progress {
+    margin: 24px 0;
+    padding: 18px;
+    border-radius: 14px;
+    background: #e7f6ff;
+    color: #292a31;
+}
+.training-flow .prep-progress-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+.training-flow .prep-progress-track {
+    width: 100%;
+    height: 12px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid #b0d9f0;
+}
+.training-flow .prep-progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: #009df4;
+    transition: width 0.2s ease;
+}
+.training-flow .prep-checklist {
+    display: grid;
+    gap: 12px;
+}
+.training-flow .prep-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid #b0d9f0;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #292a31;
+    cursor: pointer;
+}
+.training-flow .prep-item input {
+    flex: 0 0 auto;
+    width: auto;
+    margin: 5px 0 0;
+}
+.training-flow .prep-item span {
+    display: grid;
+    gap: 4px;
+}
+.training-flow .prep-item small {
+    color: #555b66;
+    line-height: 1.5;
+}
+.training-flow .prep-item.is-checked {
+    background: #f0fbf5;
+    border-color: #27ae60;
+}
+.training-flow .prep-item.is-checked strong {
+    text-decoration: line-through;
+}
+.training-flow .prep-status-message {
+    margin: 18px 0 0;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f2f4f8;
+}
+.training-flow .prep-status-message.is-complete {
+    color: #176b3a;
+    background: #d3ffd5;
+    font-weight: 700;
+}
+.training-flow .button-secondary {
+    color: #007dbd;
+    background: #e7f6ff;
+    border: 1px solid #b0d9f0;
+}
+.training-flow .button-secondary:hover {
+    color: #ffffff;
+    background: #009df4;
+}
+body.dark .training-flow .prep-progress {
+    background: #3b5262;
+    color: #f2f4f8;
+}
+body.dark .training-flow .prep-item {
+    background: #50515f;
+    color: #f2f4f8;
+    border-color: #6b7184;
+}
+body.dark .training-flow .prep-item small {
+    color: #e0e5ed;
+}
+body.dark .training-flow .prep-status-message {
+    background: #3b3d49;
+    color: #f2f4f8;
+}
+body.dark .training-flow .prep-status-message.is-complete {
+    background: #234a36;
+    color: #d3ffd5;
+}
+@media (max-width: 768px) {
+    .training-flow .prep-progress-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+    }
+}

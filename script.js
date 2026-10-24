@@ -233,3 +233,58 @@ restartButton.addEventListener("click", () => {
     summaryQna.textContent = "";
     showStep(0);
 } );
+
+
+// 중간고사 기능 추가 항목: 방문 전 준비 체크리스트
+const prepOpenButton = document.querySelector("#prep-open-button");
+const prepBackButton = document.querySelector("#prep-back-button");
+const prepResetButton = document.querySelector("#prep-reset-button");
+const prepChecks = document.querySelectorAll(".prep-check");
+const prepProgressText = document.querySelector("#prep-progress-text");
+const prepProgressBar = document.querySelector("#prep-progress-bar");
+const prepProgressFill = document.querySelector("#prep-progress-fill");
+const prepStatusMessage = document.querySelector("#prep-status-message");
+
+function updatePreparationProgress() {
+    const completedCount = Array.from(prepChecks).filter((checkbox) => checkbox.checked).length;
+    const totalCount = prepChecks.length;
+    const percent = totalCount === 0 ? 0 : Math.round((completedCount / totalCount) * 100);
+
+    prepProgressText.textContent = `${completedCount} / ${totalCount} 완료`;
+    prepProgressBar.setAttribute("aria-valuenow", String(completedCount));
+    prepProgressFill.style.width = `${percent}%`;
+
+    prepChecks.forEach((checkbox) => {
+        checkbox.closest(".prep-item").classList.toggle("is-checked", checkbox.checked);
+    });
+
+    if (completedCount === totalCount) {
+        prepStatusMessage.textContent = "모든 준비 항목을 확인했어요. 집온 서비스를 더 편안하게 이용할 준비가 되었어요!";
+        prepStatusMessage.classList.add("is-complete");
+    } else {
+        prepStatusMessage.textContent = `아직 ${totalCount - completedCount}개 항목이 남아 있어요. 준비한 항목을 체크해 주세요.`;
+        prepStatusMessage.classList.remove("is-complete");
+    }
+}
+
+prepOpenButton.addEventListener("click", () => {
+    showStep(4);
+    updatePreparationProgress();
+    document.querySelector(".preparation-step").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+prepBackButton.addEventListener("click", () => {
+    showStep(3);
+    document.querySelector(".complete-step").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+prepResetButton.addEventListener("click", () => {
+    prepChecks.forEach((checkbox) => {
+        checkbox.checked = false;
+    });
+    updatePreparationProgress();
+});
+
+prepChecks.forEach((checkbox) => {
+    checkbox.addEventListener("change", updatePreparationProgress);
+});
