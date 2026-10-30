@@ -1,303 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-
 <head>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>집온 JipOn</title>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="따뜻하지만 효율적인, 감성적 스마트 홈케어 서비스를 제공합니다.">
+    <title>집온 | JipOn</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <!--
-        사용자: 청소 서비스 이용을 원하는 사람
-        목적: 다양한 청소 및 수리 서비스 제공
-        핵심 행동: 청소 서비스 이용하기
-        정보 순서: 소개→기능→방법→세션 설정
-    -->
-    <header>
-        <h1>스마트 홈케어 서비스</h1>
-        <p>따뜻하지만 효율적인, 감성적 스마트 홈케어 서비스를 제공합니다.</p>
-
-        <nav aria-label="주요 메뉴">
-            <a href="#about">서비스 소개</a>
-            <a href="#features">전체 서비스</a>
-            <a href="#steps">이용 방법</a>
-            <a href="#subscribe">서비스 관련 소식 받기</a>
-        </nav>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#top" aria-label="집온 JipOn 맨 위로"><img src="assets/image/Logo_blue.png" alt="집온 JipOn" width="512" height="124"></a>
+            <nav aria-label="주요 메뉴">
+                <a href="#about">전체 서비스</a>
+                <a href="#planner">이용 방법</a>
+                <a href="#archive">신청 내역</a>
+            </nav>
+            <button id="theme-button" class="theme-button" type="button" aria-pressed="false">다크 모드</button>
+        </div>
     </header>
 
-    <main>
-        <section id="about">
-            <h2>서비스 소개</h2>
-            <h3>일상에 활력을 불어넣어 주는 감성적 스마트 홈케어 서비스</h3>
-
-            <img src="assets/image/main.jpg" alt="브랜드 로고 이미지">
-
-            <p>“집을 켜다, 삶을 켜다.”</p>
-            <p>사용자의 일상에 새로운 리듬을 켜주고, 활력을 불어넣어주는 스마트 홈케어 브랜드입니다.</p>
-        </section>
-        
-        <section id="features">
-            <h2>전체 서비스</h2>
-
-            <div class="tabs" role="tablist" aria-label="기능 선택">
-                <button 
-                    id="tab-practice"
-                    class="tab is-active"
-                    type="button"
-                    role="tab"
-                    aria-selected="true"
-                    aria-controls="feature-practice"
-                    data-target="#feature-practice">
-                    생활 청소
-                </button>
-
-                <button
-                    id="tab-audience"
-                    class="tab"
-                    type="button"
-                    role="tab"
-                    aria-selected="false"
-                    aria-controls="feature-audience"
-                    data-target="#feature-audience">
-                    이사 청소
-                </button>
-
-                <button
-                    id="tab-feedback"
-                    class="tab"
-                    type="button"
-                    role="tab"
-                    aria-selected="false"
-                    aria-controls="feature-feedback"
-                    data-target="#feature-feedback">
-                    설치 및 수리
-                </button>
+    <main id="top">
+        <section class="hero container" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <p class="eyebrow">Home On. Life On. JipOn.</p>
+                <h1 id="hero-title">집을 켜다,<br><em>삶을 켜다.</em></h1>
+                <p class="hero-description">당신의 하루가 가벼워지도록<br>집온이 당신을 챙길게요.</p>
+                <a class="button button-primary" href="#planner">서비스 이용하기<span aria-hidden="true">↗</span></a>
+                <p class="hero-note">집온은 당신의 일상에 새로운 여유를 켜 드립니다.</p>
             </div>
-
-            <div
-                id="feature-practice"
-                class="panel is-active"
-                role="tabpanel"
-                aria-labelledby="tab-practice">
-                <h3>생활 청소</h3>
-                <p>혼자 살수록 미루기 쉬운 집안일을 대신한 맞춤 청소 서비스</p>        
-            </div>
-
-            <div
-                id="feature-audience"
-                class="panel"
-                role="tabpanel"
-                aria-labelledby="tab-audience"
-                hidden>
-                <h3>이사 청소</h3>
-                <p>입주 전부터 퇴거 후까지, 새로운 시작을 위한 꼼꼼한 공간 청소</p>       
-            </div>
-
-            <div
-                id="feature-feedback"
-                class="panel"
-                role="tabpanel"
-                aria-labelledby="tab-feedback"
-                hidden>
-                <h3>설치 및 수리</h3>
-                <p>혼자서는 어려운 각종 가전, 가구 설치와 수리를 한번에 해결</p>       
-            </div>
+            <figure class="hero-image">
+            <img src="assets/image/Main2.jpg" width="1920" height="1080">
+            <figcaption>집온 서비스 콘셉트 이미지</figcaption>
+            </figure>
         </section>
 
-        <section id="steps">
-            <h2>이용 방법</h2>
-            <ol>
-                <li>회원가입 및 로그인</li>
-                <li>원하는 서비스를 선택합니다.</li>
-                <li>주소지를 입력해주세요.</li>
-                <li>상세 내용을 입력해주세요.</li>
-                <li>상담 신청을 클릭하면 담당자가 매칭됩니다.</li>
+        <section id="about" class="section container" aria-labelledby="about-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">SERVICE</p>
+                    <h2 id="about-title">집온의 홈케어 솔루션</h2>
+                </div>
+                <p>청소부터 관리까지, 일상에 필요한 도움을 한곳에서 만나보세요.</p>
+            </div>
+            <ol class="how-list">
+                <li>
+                    <span class="how-number">CLEAN</span>
+                    <h3>생활 청소</h3>
+                    <p>안한 집을 위한 맞춤형 생활 서비스</p>
+                </li>
+                <li>
+                    <span class="how-number">MOVE</span>
+                    <h3>이사 청소</h3>
+                    <p>새로운 시작을 위한 꼼꼼한 공간 청소</p>
+                </li>
+                <li>
+                    <span class="how-number">REPAIR</span>
+                    <h3>설치 및 수리</h3>
+                    <p>각종 가전, 가구 설치와 수리를 한번에</p>
+                </li>
             </ol>
         </section>
-        
-        <section id="event-practice">
-            <h2>서비스 이용 설정</h2>
 
-            <div class="event-grid">
-                <article class="event-card">
-                    <h3>화면 테마</h3>
-                    <button id="themeButton" type="button">다크 모드로 변경</button>
-                </article>
+        <section id="planner" class="section container" aria-labelledby="planner-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">REQUEST</p>
+                    <h2 id="planner-title">서비스 이용 신청</h2>
+                </div>
+                <p>이전 단계로 돌아가도 입력한 내용은 유지됩니다.</p>
+            </div>
+            <div class="planner-card">
+                <ol class="progress" aria-label="계획 설정 진행 단계">
+                    <li class="progress-item is-current" aria-current="step"><span>1</span>문의 정보</li>
+                    <li class="progress-item"><span>2</span>상세 조건</li>
+                    <li class="progress-item"><span>3</span>내용 확인</li>
+                </ol>
+                <form id="plan-form" novalidate>
+                    <div class="flow-step" data-step="1">
+                        <p class="step-kicker">STEP 01. 문의 정보</p>
+                        <h3>희망하시는 서비스가 있을까요?</h3>
+                        <p class="step-description">이용하고자 하는 서비스를 제목을 적어 주세요.</p>
+                        <div class="field">
+                            <label for="presentation-title">문의 제목<span class="required">필수</span></label>
+                            <input id="presentation-title" name="title" type="text" maxlength="60" placeholder="예: 입주 청소 문의" aria-describedby="title-help title-error">
+                            <p id="title-help" class="field-help">*최대 60자까지 입력할 수 있습니다.</p>
+                            <p id="title-error" class="field-error" role="alert"></p>
+                        </div>
+                        <div class="field">
+                            <label for="nickname">이름 <span class="optional">선택</span></label>
+                            <input id="nickname" name="nickname" type="text" maxlength="10" placeholder="예: 홍길동" aria-describedby="nickname-count">
+                            <p id="nickname-count" class="field-help" aria-live="polite">0 / 10자</p>
+                        </div>
+                        <div class="step-actions step-actions-end">
+                            <button id="info-next" class="button button-primary" type="button">상세 조건 선택하기 <span aria-hidden="true">→</span>
+                            </button>
+                        </div>
+                    </div>
 
-                <article class="event-card">
-                    <h3>사용자 정보</h3>
-                    <label for="nickname">사용자 이름</label>
-                    <input type="text" id="nickname" maxlength="10">
-                    <p id="nicknameCount" aria-live="polite">0 / 10</p>
-                </article>
+                    <div class="flow-step" data-step="2" hidden>
+                        <p class="step-kicker">STEP 02. 상세 조건</p>
+                        <h3>어떻게 연습할까요?</h3>
+                        <p class="step-description">서비스 이용에 필요한 상세 조건을 선택해 주세요.</p>
+                        <fieldset class="field choice-fieldset">
+                            <legend>서비스 이용 시간</legend>
+                            <div class="duration-options">
+                                <label class="choice-card">
+                                    <input type="radio" name="duration" value="3">
+                                    <span><strong>3시간</strong><small>딱 방 하나만</small></span>
+                                </label>
+                                <label class="choice-card">
+                                    <input type="radio" name="duration" value="5" checked>
+                                    <span><strong>6시간</strong><small>큰 방도 문제 없어요</small></span>
+                                </label>
+                                <label class="choice-card">
+                                    <input type="radio" name="duration" value="10">
+                                    <span><strong>12시간</strong><small>새롭게 태어나는 우리집</small></span>
+                                </label>
+                            </div>
+                        </fieldset>
+                        <div class="field qna-field">
+                            <label class="check-row" for="qna-option">
+                                <input id="qna-option" type="checkbox">
+                                <span><strong>추가 문의도 있어요.</strong><small>추가 문의사항을 선택할 수 있습니다.</small></span>
+                            </label>
+                            <fieldset id="qna-options" class="qna-options" hidden>
+                                <legend>추가 문의</legend>
+                                <div class="inline-options">
+                                    <label><input type="radio" name="qna-count" value="1">방 하나만 청소해 주세요.</label>
+                                    <label><input type="radio" name="qna-count" value="2" checked> 몇개의 방을 청소해 주세요.</label>
+                                    <label><input type="radio" name="qna-count" value="3">집 전체를 청소해 주세요.</label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="step-actions">
+                            <button id="option-prev" class="button button-secondary" type="button">이전</button>
+                            <button id="option-next" class="button button-primary" type="button">내용 확인하기 <span aria-hidden="true">→</span></button>
+                        </div>
+                    </div>
 
-                <article class="event-card">
-                    <h3>개인정보 제공 동의</h3>
-                    <label class="agree-row">
-                        <input type="checkbox" id="agreeCheck">
-                        서비스 이용을 위한 개인정보 제공에 동의합니다.
-                    </label>
-                    <p id="agreeMessage" aria-live="polite">
-                        동의 후 서비스를 이용하실 수 있습니다.
-                    </p>
-                    <button id="startButton" type="button" disabled>
-                        서비스 신청하기
-                    </button>
-                </article>
+                    <div class="flow-step" data-step="3" hidden>
+                        <p class="step-kicker">STEP 03. 내용 확인</p>
+                        <h3>이 내용으로 신청할까요?</h3>
+                        <p class="step-description">내용을 확인한 뒤 신청하세요. 수정 버튼으로 해당 단계로 돌아갈 수 있습니다.</p>
+                        <dl class="summary-list">
+                            <div><dt>문의 제목</dt><dd id="summary-title"></dd></div>
+                            <div><dt>신청자</dt><dd id="summary-nickname"></dd></div>
+                            <div><dt>서비스 이용 시간</dt><dd id="summary-duration"></dd></div>
+                            <div><dt>추가 문의</dt><dd id="summary-qna"></dd></div>
+                        </dl>
+                        <div class="step-actions">
+                            <div class="edit-actions">
+                                <button id="edit-info" class="button button-text" type="button">신청 정보 수정</button>
+                                <button id="edit-options" class="button button-text" type="button">상세 조건 수정</button>
+                            </div>
+                            <button id="save-plan" class="button button-primary" type="button">저장하기 <span aria-hidden="true">→</span></button>
+                        </div>
+                    </div>
+
+                    <div class="flow-step complete-step" data-step="4" hidden>
+                        <div class="complete-mark" aria-hidden="true">✓</div>
+                        <p class="step-kicker">신청 완료</p>
+                        <h3>서비스 신청이 완료되었어요.</h3>
+                        <p id="complete-message">내 신청 내역에서 다시 확인할 수 있습니다.</p>
+                        <div class="complete-actions">
+                            <a class="button button-primary" href="#archive">내 신청 내역 보기 <span aria-hidden="true">↗</span></a>
+                            <button id="restart-button" class="button button-secondary" type="button">새 서비스 신청하기</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </section>
 
-        <dialog id = "recording-dialog" aria-labelledby="recording-title" aria-describedby="recording-description">
-            <h2 id="recording-title">개인정보 이용 안내</h2>
-            <p id="recording-description">서비스 이용에 앞서 개인정보를 수집 및 활용할 수 있습니다.</p>
-            <div class = "dialog-actions">
-                <button id = "recording-cancel" type="button">돌아가기</button>
-                <button id = "recording-confirm" type="button">동의하고 서비스 이용하기</button>
+        <section id="archive" class="section container archive-section" aria-labelledby="archive-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">History</p>
+                    <h2 id="archive-title">내 신청 내역<span id="plan-count" class="count-badge">0</span>
+                    </h2>
+                </div>
+                <p>내용은 이 브라우저에만 보관됩니다.</p>
             </div>
-        </dialog>
-
-        <section id="training-flow" class="training-flow" hidden>
-            <h2>서비스 이용 설정</h2>
-            <p class="progress" aria-label="설정 진행 단계">
-                <span class="progress_item">1. 문의 제목</span>
-                <span class="progress_item">2. 상세 조건</span>
-                <span class="progress_item">3. 확인</span>
-            </p>
-
-            <section class="step" data-step="1" hidden>
-                <h3>문의 제목을 입력해 주세요.</h3>
-                <label for="presentation-title">문의 제목</label>
-                <input id="presentation-title" type="text" placeholder="예: 입주 청소 문의" aria-describedby="title-error">
-                <p id="title-error" class="error-message" aria-live="polite"></p>
-                <button id="title-next" type="button">상세 조건 선택하기</button>
-            </section>
-
-            <section class="step" data-step="2" hidden>
-                <h3>상세 조건을 선택해 주세요.</h3>
-                <label for="duration-range">서비스 이용 시간</label>
-                <input id="duration-range" type="range" min="0" max="2" step="1" value="1">
-                <output id="duration-value" for="duration-range">5시간</output>
-                <label><input type="checkbox" id="qna-option">추가 문의 포함</label>
-                <fieldset id="qna-options" hidden>
-                    <legend>추가 문의</legend>
-                    <label><input type="radio" name="qna-count" value="1">방 하나만 청소해 주세요.</label>
-                    <label><input type="radio" name="qna-count" value="2">몇개의 방만 청소해 주세요.</label>
-                    <label><input type="radio" name="qna-count" value="3">집 전체를 청소해 주세요.</label>
-                </fieldset>
-
-                <div class="step-actions">
-                    <button id="option-prev" type="button">이전</button>
-                    <button id="option-next" type="button">내용 확인하기</button>
-                </div>
-            </section>
-
-            <section class="step" data-step="3" hidden>
-                <h3>입력한 내용을 확인해 주세요.</h3>
-                <div class="summary-list">
-                    <div><span>문의 제목</span><strong id="summary-title"></strong></div>
-                    <div><span>서비스 이용 시간</span><strong id="summary-duration"></strong></div>
-                    <div><span>추가 문의</span><strong id="summary-qna"></strong></div>
-                </div>
-                <div class="step-actions">
-                    <button id="summary-prev" type="button">수정하기</button>
-                    <button id="finish-button" type="button">설정 완료하기</button>
-                </div>
-            </section>
-
-            <section class="step complete-step" data-step="4" hidden>
-                <h3>서비스 신청이 완료되었습니다</h3>
-                <p>신청한 내용을 확인했습니다. 방문 전 준비 사항도 미리 확인해 보세요.</p>
-                <div class="step-actions complete-actions">
-                    <button id="prep-open-button" type="button">방문 전 준비하기</button>
-                    <button id="restart-button" type="button" class="button-secondary">재설정</button>
-                </div>
-            </section>
-
-            <!--중간고사 기능 추가 항목-->
-            <section class="step preparation-step" data-step="5" hidden>
-                <h3>서비스 이용 준비 체크리스트</h3>
-                <p>조금만 미리 준비하면 더 편안한 청소 서비스를 이용할 수 있어요.</p>
-
-                <div class="prep-progress" aria-live="polite">
-                    <div class="prep-progress-heading">
-                        <span>준비 진행률</span>
-                        <strong id="prep-progress-text">0 / 4 완료</strong>
-                    </div>
-                    <div class="prep-progress-track" role="progressbar"
-                         aria-label="집온 방문 전 준비 진행률" aria-valuemin="0"
-                         aria-valuemax="4" aria-valuenow="0" id="prep-progress-bar">
-                        <div id="prep-progress-fill" class="prep-progress-fill"></div>
-                    </div>
-                </div>
-
-                <div class="prep-checklist">
-                    <label class="prep-item">
-                        <input type="checkbox" class="prep-check" value="belongings">
-                        <span>
-                            <strong>귀중품 및 개인 물품 정리</strong>
-                            <small>청소 중 분실이나 파손이 걱정되는 물건을 안전한 곳에 보관해 주세요.</small>
-                        </span>
-                    </label>
-                    <label class="prep-item">
-                        <input type="checkbox" class="prep-check" value="space">
-                        <span>
-                            <strong>청소가 필요한 공간 확인하기</strong>
-                            <small>특히 신경 써 주었으면 하는 공간을 미리 생각해 주세요.</small>
-                        </span>
-                    </label>
-                    <label class="prep-item">
-                        <input type="checkbox" class="prep-check" value="access">
-                        <span>
-                            <strong>출입 환경 확인하기</strong>
-                            <small>방문 시 출입 방법과 필요한 안내 사항을 확인해 주세요.</small>
-                        </span>
-                    </label>
-                    <label class="prep-item">
-                        <input type="checkbox" class="prep-check" value="requests">
-                        <span>
-                            <strong>전달할 요청 사항 정리하기</strong>
-                            <small>청소 시 주의할 점이나 집온에 알릴 내용을 정리해 주세요.</small>
-                        </span>
-                    </label>
-                </div>
-
-                <p id="prep-status-message" class="prep-status-message" aria-live="polite">
-                    준비 항목을 체크하면 진행률이 업데이트됩니다.
-                </p>
-                <div class="step-actions">
-                    <button id="prep-back-button" type="button" class="button-secondary">신청 완료 화면으로</button>
-                    <button id="prep-reset-button" type="button" class="button-secondary">체크리스트 다시 시작</button>
-                </div>
-            </section>
-        </section>
-        <!--중간고사 기능 추가 부분 끝-->
-
-        <section id="subscribe" class="subscribe-card">
-            <h2>서비스 관련 소식 받기</h2>
-            <form id="subscribe-form">
-                <label for="email">이메일</label>
-                <input type="email" id="email" name="email">
-                <button id="subscribeButton" type="submit" >신청하기</button>
-            </form>
-            
-            <p id="subscribeMessage" aria-live="polite">
-                이메일을 입력한 뒤 신청해주세요.
-            </p>
-
+            <p id="archive-status" class="archive-status" role="status" aria-live="polite"></p>
+            <div id="empty-state" class="empty-state">
+                <span class="empty-icon" aria-hidden="true">↗</span>
+                <h3>아직 신청한 서비스가 없어요.</h3>
+                <p>서비스 신청을 하면 이곳에서 확인할 수 있습니다.</p>
+                <a class="button button-secondary" href="#planner">서비스 신청 하기</a>
+            </div>
+        <ul id="plan-list" class="plan-list" aria-label="신청 내역" hidden></ul>
         </section>
     </main>
 
-    <footer>
-        <small>2026 © 집온 JipOn 청소 서비스</small>
+    <dialog id="plan-dialog" class="plan-dialog" aria-labelledby="dialog-title">
+        <div class="dialog-top">
+            <p class="eyebrow">신청 내역</p>
+            <button id="dialog-close" class="icon-button" type="button" aria-label="닫기">×</button>
+        </div>
+        <h2 id="dialog-title"></h2>
+        <p id="dialog-status" class="dialog-status"></p>
+        <dl class="summary-list">
+            <div><dt>신청자</dt><dd id="dialog-nickname"></dd></div>
+            <div><dt>서비스 이용 시간</dt><dd id="dialog-duration"></dd></div>
+            <div><dt>추가문의</dt><dd id="dialog-qna"></dd></div>
+        </dl>
+        <button id="dialog-done" class="button button-primary" type="button">확인했어요</button>
+    </dialog>
+
+    <footer class="site-footer">
+        <div class="container">
+            <span class="brand">
+                <img src="assets/image/Logo_blue.png" alt="집온 | JipOn" width="512" height="124">
+            </span>
+            <small>집온 | JipOn · 2026</small>
+        </div>
     </footer>
-
-    <script src="script.js"></script>
-
 </body>
 </html>
