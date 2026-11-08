@@ -89,10 +89,13 @@
                         <p class="step-kicker">STEP 01. 문의 정보</p>
                         <h3>희망하시는 서비스가 있을까요?</h3>
                         <p class="step-description">이용하고자 하는 서비스를 제목을 적어 주세요.</p>
-                        <div class="field">
+                        <div class="field" id="title-field">
                             <label for="presentation-title">문의 제목<span class="required">필수</span></label>
-                            <input id="presentation-title" name="title" type="text" maxlength="60" placeholder="예: 입주 청소 문의" aria-describedby="title-help title-error">
-                            <p id="title-help" class="field-help">*최대 60자까지 입력할 수 있습니다.</p>
+                            <input id="presentation-title" name="title" type="text" minlength="2" maxlength="60" required placeholder="예: 입주 청소 문의" aria-describedby="title-help title-count title-error">
+                            <div class="field=meta">
+                                <p id="title-help" class="field-help">2자 이상 60자 이하로 입력해 주세요.</p>
+                                <p id="title-count" class="field-count" aria-live="polite">0 / 60자</p>
+                            </div>
                             <p id="title-error" class="field-error" role="alert"></p>
                         </div>
                         <div class="field">
@@ -129,7 +132,7 @@
                         </fieldset>
                         <div class="field qna-field">
                             <label class="check-row" for="qna-option">
-                                <input id="qna-option" type="checkbox">
+                                <input id="qna-option" name="qna" type="checkbox" value="included" aria-controls="qna-options" aria-expanded="false">
                                 <span><strong>추가 문의도 있어요.</strong><small>추가 문의사항을 선택할 수 있습니다.</small></span>
                             </label>
                             <fieldset id="qna-options" class="qna-options" hidden>
@@ -162,8 +165,9 @@
                                 <button id="edit-info" class="button button-text" type="button">신청 정보 수정</button>
                                 <button id="edit-options" class="button button-text" type="button">상세 조건 수정</button>
                             </div>
-                            <button id="save-plan" class="button button-primary" type="button">저장하기 <span aria-hidden="true">→</span></button>
+                            <button id="save-plan" class="button button-primary" type="submit">저장하기 <span aria-hidden="true">→</span></button>
                         </div>
+                        <p id="submit-status" class="submit-status" role="status" aria-live="polite"></p>
                     </div>
 
                     <div class="flow-step complete-step" data-step="4" hidden>
