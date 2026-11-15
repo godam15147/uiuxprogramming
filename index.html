@@ -19,10 +19,17 @@
                 <img src="assets/image/Logo_blue.png" alt="집온 JipOn" width="512" height="124">
                 <img src="assets/image/Logo_white.png" alt="집온 JipOn" width="512" height="124" class="logo-dark" aria-hidden="true">
             </a>
-            <nav aria-label="주요 메뉴">
-                <a href="#about">전체 서비스</a>
-                <a href="#planner">이용 방법</a>
-                <a href="#archive">신청 내역</a>
+
+            <button id="menu-toggle" class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false">
+                메뉴 열기
+            </button>
+            
+            <nav id="main-nav" class="main-nav" aria-label="주요 메뉴">
+                <ul>
+                    <li><a href="#about">전체 서비스</a></li>
+                    <li><a href="#planner">이용 방법</a></li>
+                    <li><a href="#archive">신청 내역</a></li>
+                </ul>
             </nav>
             <button id="theme-button" class="theme-button" type="button" aria-pressed="false">다크 모드</button>
         </div>
@@ -193,6 +200,19 @@
                 </div>
                 <p>내용은 이 브라우저에만 보관됩니다.</p>
             </div>
+
+            <div class="plan-filters" role="group" aria-label="표시 범위">
+                <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">
+                    전체 
+                </button>
+                <button class="filter-button" type="button" data-filter="active" aria-pressed="false">
+                    저장됨 
+                </button>
+                <button class="filter-button" type="button" data-filter="cancelled" aria-pressed="false">
+                    취소됨
+                </button>
+            </div>
+
             <p id="archive-status" class="archive-status" role="status" aria-live="polite"></p>
             <div id="empty-state" class="empty-state">
                 <span class="empty-icon" aria-hidden="true">↗</span>
