@@ -28,7 +28,7 @@ let currentFilter = "all";
 
 const saveButton = document.querySelector("#save-plan");
 const submitStatus = document.querySelector("#submit-status");
-const completeMessage = document.querySelector("#complet-message");
+const completeMessage = document.querySelector("#complete-message");
 let isSubmitting = false;
 
 function readPlans() {
@@ -82,7 +82,7 @@ function showStep(number) {
 function updateTitleExperience() {
   const length = titleInput.value.length;
   const valid = titleInput.value.trim().length >= 2;
-  const hasError = titleInput.getAttribute("aira-invalid") === "true";
+  const hasError = titleInput.getAttribute("aria-invalid") === "true";
 
   titleCount.textContent = length + " / 60자";
   titleField.classList.toggle("has-error", hasError);
@@ -103,9 +103,9 @@ function validateTitle() {
     titleInput.focus();
     return false;
   }
-  if(title,length < 2) {
+  if(title.length < 2) {
     titleError.textContent = "발표 제목은 2자 이상 입력해 주세요.";
-    titleInput.setAttribute("aria-invalie", "true");
+    titleInput.setAttribute("aria-invalid", "true");
     updateTitleExperience();
     titleInput.focus();
     return false;
@@ -139,7 +139,7 @@ function updateSummary() {
 }
 
 function setSubmitState(state, message) {
-  isSubmitting = state === "loagind";
+  isSubmitting = state === "loading";
   form.setAttribute("aria-busy", string(isSubmitting));
   saveButton.disabled = isSubmitting;
   saveButton.textContent = isSubmitting ? "저장하는 중..." : "계획 저장하기";
@@ -220,7 +220,7 @@ function saveCurrentPlan() {
     createdAt: new Date().toISOString()
   };
 
-  plan.unshift(plan);
+  plans.unshift(plan);
   if (!savePlans()) {
     plans.shift();
     return false;
@@ -288,7 +288,7 @@ navLinks.forEach((link) => {
   });
 });
 
-function getVisivlePlans() {
+function getVisiblePlans() {
   return plans.filter((plan) => {
     if(currentFilter === "all") return true;
     if(currentFilter === "cancelled") return plan.cancelled;
@@ -297,17 +297,17 @@ function getVisivlePlans() {
 }
 
 function renderPlans() {
-  const visivlePlans = getVisivlePlans();
+  const visiblePlans = getVisiblePlans();
 
   planList.replaceChildren();
-  emptyState.hidden = visivlePlans.length !== 0;
-  planList.hidden = visivlePlans.length === 0;
+  emptyState.hidden = visiblePlans.length !== 0;
+  planList.hidden = visiblePlans.length === 0;
 
   const emptyTitle = emptyState.querySelector("h3");
   const emptyDescription = emptyState.querySelector("p");
   const emptyAction = emptyState.querySelector("a");
 
-  if (visivlePlans.length === 0) {
+  if (visiblePlans.length === 0) {
     const filtered = currentFilter !== "all";
     emptyTitle.textContent = filtered
       ? "선택한 상태의 신청건이 없어요."
@@ -318,13 +318,13 @@ function renderPlans() {
     emptyAction.hidden = filtered;
   }
 
-  planCount.textContent = string(visivlePlans);
+  planCount.textContent = String(visiblePlans);
   planCount.setAttribute(
-    "aria-laber",
+    "aria-label",
     `현재 표시 중인 신청건 ${visiblePlans.length}개`
   );
 
-  visivlePlans.forEach((plan) => {
+  visiblePlans.forEach((plan) => {
     const card = document.createElement("li");
     card.className = `plan-card${plan.cancelled ? " is-cancelled" : ""}`;
     const top = document.createElement("div");
@@ -359,7 +359,7 @@ filterButtons.forEach((button) => {
 
     filterButtons.forEach((item) => {
       const selected = item === button;
-      item.selected.toggle("is-active", selected);
+      item.classList.toggle("is-active", selected);
       item.setAttribute("aria-pressed", String(selected));
     });
     renderPlans();
