@@ -99,7 +99,7 @@ function validateTitle() {
   if (!title) {
     titleError.textContent = "발표 제목을 입력해 주세요.";
       titleInput.setAttribute("aria-invalid", "true");
-      updateTitleExperience();
+    updateTitleExperience();
     titleInput.focus();
     return false;
   }
@@ -140,7 +140,7 @@ function updateSummary() {
 
 function setSubmitState(state, message) {
   isSubmitting = state === "loading";
-  form.setAttribute("aria-busy", string(isSubmitting));
+  form.setAttribute("aria-busy", String(isSubmitting));
   saveButton.disabled = isSubmitting;
   saveButton.textContent = isSubmitting ? "저장하는 중..." : "계획 저장하기";
   submitStatus.textContent = message;
@@ -164,7 +164,7 @@ nicknameInput.addEventListener("input", () => {
 
 function syncQnaOptions() {
   const open = qnaOption.checked;
-  qnaOption.setAttribute("aria-expaned", String(open));
+  qnaOption.setAttribute("aria-expanded", String(open));
   qnaOptions.hidden = !open;
   qnaInputs.forEach((input) => {
     input.disabled = !open;
@@ -268,6 +268,10 @@ function updateCurrentNav() {
     link.removeAttribute("aria-current");
   }
   });
+
+  const currentLink = document.querySelector('.main-nav a[aria-current="page"]');
+  const pageName = currentLink ? currentLink.textContent.trim() : "홈";
+  document.title = pageName + "집온 | JipOn";
 }
 
 window.addEventListener("hashchange", updateCurrentNav);
@@ -278,6 +282,15 @@ menuToggle.addEventListener("click", () => {
 
   menuToggle.textContent = isOpen ? "메뉴 닫기" : "메뉴 열기"
   menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+document.addEventListener("keydown", (event) => {
+  if(event.key !== "Escape" || !mainNav.classList.contains("is-open")) return;
+
+  mainNav.classList.remove("is-open");
+  menuToggle.textContent = "메뉴 열기";
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.focus();
 });
 
 navLinks.forEach((link) => {
@@ -315,10 +328,12 @@ function renderPlans() {
       emptyDescription.textContent = filtered
       ? "다른 상태를 선택해 보세요."
       : "첫 신청을 접수하면 이곳에서 다시 볼 수 있습니다.";
-    emptyAction.hidden = filtered;
+    emptyAction.hidden = false;
+    emptyAction.textContent = filtered ? "전체 보기" : "계획 만들러 가기";
+    emptyAction.href = filtered ? "#archive":"#planner"
   }
 
-  planCount.textContent = String(visiblePlans);
+  planCount.textContent = String(visiblePlans.length);
   planCount.setAttribute(
     "aria-label",
     `현재 표시 중인 신청건 ${visiblePlans.length}개`
@@ -363,7 +378,21 @@ filterButtons.forEach((button) => {
       item.setAttribute("aria-pressed", String(selected));
     });
     renderPlans();
+
+    const count = getVisiblePlans().length;
+    const filterName = button.textContent.trim();
+    archiveStatus.textContent = count > 0
+      ? `${filterName} 신청 내역 ${count}개가 표시됩니다.`
+      : `${filterName} 신청 내역이 없습니다. 다른 조건을 선택해보세요.`
   });
+});
+
+emptyState.querySelector("a").addEventListener("click", (event) => {
+  if (currentFilter === "all") return;
+  event.preventDefault();
+  const allButton = document.querySelector('[data-filter="all"]');
+  allButton.click();
+  allButton.focus();
 });
 
 planList.addEventListener("click", (event) => {
@@ -374,7 +403,7 @@ planList.addEventListener("click", (event) => {
 
   if (button.dataset.action === "open") {
     document.querySelector("#dialog-title").textContent = plan.title;
-    document.querySelector("#dialog-status").textContent = plan.cancelled ? "취소된 계획입니다." : "저장된 계획입니다.";
+    document.querySelector("#dialog-status").textContent = plan.cancelled ? "취소된 내역입니다." : "저장된 내역입니다.";
     document.querySelector("#dialog-nickname").textContent = plan.nickname || "입력 안 함";
     document.querySelector("#dialog-duration").textContent = `${plan.duration}분`;
     document.querySelector("#dialog-qna").textContent = qnaText(plan);
@@ -390,7 +419,10 @@ planList.addEventListener("click", (event) => {
     ? `‘${plan.title}’ 계획을 ${wasCancelled ? "다시 사용할 수 있습니다" : "취소했습니다"}.`
     : "상태를 현재 화면에서 바꿨지만, 브라우저 저장 공간을 사용할 수 없어 새로고침하면 사라질 수 있습니다.";
   const nextButton = [...planList.querySelectorAll('button[data-action="toggle"]')].find((item) => item.dataset.id === plan.id);
-  nextButton?.focus();
+  const selectedFilter = document.querySelector(
+    '.filter-button[aria-pressed="true"]'
+  );
+  (nextButton || selectedFilter)?.focus();
 });
 
 document.querySelector("#dialog-close").addEventListener("click", () => planDialog.close());
